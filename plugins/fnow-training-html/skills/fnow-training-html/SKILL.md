@@ -137,9 +137,30 @@ description: "Use when generating an HTML training summary page from a Forecast 
 }
 ```
 
+**Правило отчуждаемости — ОБЯЗАТЕЛЬНО:**
+HTML должен быть самодостаточным — работать на любой машине без внешних зависимостей.
+
+```
+❌ НЕЛЬЗЯ:
+  <link href="file:///C:/Users/...">        ← локальный файл
+  url('file:///C:/Users/...')               ← локальное изображение
+
+✅ ПРАВИЛЬНО:
+  Не подключать никакие <link> для шрифтов
+  Hero background — только CSS-градиент, без url()
+```
+
+**CSS-шаблон для hero (без внешних файлов):**
+```css
+.hero {
+  background: linear-gradient(150deg, rgba(0,51,102,.93) 0%, rgba(0,102,202,.84) 55%, rgba(46,139,224,.78) 100%);
+  padding: 80px 0 90px;
+}
+```
+
 **Остальные CSS-правила:**
 - `border-radius: 0` везде — строго
-- Шрифт Outfit (через fonts-local.css)
+- Шрифт: `--font:'Outfit','Helvetica Neue',Arial,sans-serif` — без `<link>`, браузер использует системный стек
 - Цвета: `--brand:#0066CA`, `--brand-dark:#003366`
 - Все плитки — `border: 1px solid var(--border)`, hover — `border-color: var(--brand)`
 - Тест — интерактивный JavaScript: клик → правильный/неправильный, финальный балл
@@ -185,6 +206,8 @@ description: "Use when generating an HTML training summary page from a Forecast 
 
 | Ошибка | Правило |
 |---|---|
+| `<link href="file:///...">` в HTML | **ЗАПРЕЩЕНО** — файл не будет работать на другой машине. Шрифты — только через CSS-стек без <link> |
+| `url('file:///...')` в hero background | **ЗАПРЕЩЕНО** — использовать только CSS-градиент, без url() |
 | Белый текст невидим в кейсах | `.case-tile { background: rgba(255,255,255,.06) }` — никогда не `#fff` в тёмной секции |
 | Правильные ответы только Б и В | Self-audit шаг 2d: А/Б/В/Г каждая ≥ 2 раза |
 | Формула без источника в Q&A | KB search до формулировки (шаг 2b); без KB-подтверждения — «по словам ведущего» |
