@@ -1,0 +1,9 @@
+{
+  "name": "fnow-training-html",
+  "description": "Генерация HTML-конспекта обучения из транскрипта: план, Q&A, кейсы, тест, судья Opus",
+  "version": "0.1.0",
+  "author": {
+    "name": "Forecast NOW!",
+    "email": "support@forecastnow.ru"
+  }
+}

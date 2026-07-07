@@ -1,0 +1,9 @@
+{
+  "name": "viktorov-market",
+  "description": "Personal Claude Code skills marketplace — Forecast NOW! training and implementation tools",
+  "author": {
+    "name": "Evgeny Viktorov",
+    "github": "vikevgen1390"
+  },
+  "repository": "https://github.com/vikevgen1390/fnow-skills"
+}
